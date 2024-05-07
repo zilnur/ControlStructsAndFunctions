@@ -10,7 +10,7 @@ class TaxCalculator {
 
         when (cardType) {
             "MasterCard" -> {
-                val sumForTax = previousTransfersSum - 75000
+                val sumForTax = transferSum - 75000
                 if (sumForTax > 0) {
                     val tax = (sumForTax * 0.006).toInt() + 20
                     println("Комиссия составит $tax рублей")

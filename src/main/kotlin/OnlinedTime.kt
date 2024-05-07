@@ -14,7 +14,7 @@ class OnlinedTime {
         val minutesCount = ago / 60
         val result = when {
             minutesCount.toString().last() == '1' && minutesCount != 11 -> "$minutesCount минуту"
-            charArrayOf('2','3','4').contains(minutesCount.toString().last()) && minutesCount < 10 || minutesCount > 20 -> "$minutesCount минуты"
+            charArrayOf('2','3','4').contains(minutesCount.toString().last()) && (minutesCount < 10 || minutesCount > 20) -> "$minutesCount минуты"
             else -> "$minutesCount минут"
         }
         return result
@@ -24,7 +24,7 @@ class OnlinedTime {
         val hoursCount = ago / (60 * 60)
         val result = when {
             hoursCount.toString().last() == '1' && hoursCount != 11 -> "$hoursCount час"
-            charArrayOf('2','3','4').contains(hoursCount.toString().last()) && hoursCount < 10 || hoursCount > 20 -> "$hoursCount часа"
+            charArrayOf('2','3','4').contains(hoursCount.toString().last()) && (hoursCount < 10 || hoursCount > 20) -> "$hoursCount часа"
             else -> "$hoursCount часов"
         }
         return  result
