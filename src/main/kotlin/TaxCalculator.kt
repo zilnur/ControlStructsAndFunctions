@@ -1,6 +1,6 @@
 class TaxCalculator {
 
-    fun calculateTax(cardType: String, previousTransfersSum: Int, transferSum: Int) {
+    fun calculateTax(cardType: String = "Мир", previousTransfersSum: Int = 0, transferSum: Int) {
         if (transferSum > 150000) {
             println("Операция заблокирована. (Превышение дневного лимита)")
         }
@@ -10,7 +10,8 @@ class TaxCalculator {
 
         when (cardType) {
             "MasterCard" -> {
-                val sumForTax = transferSum - 75000
+                val unTaxLimit = 75000 - previousTransfersSum
+                val sumForTax = if (unTaxLimit > 0) transferSum - unTaxLimit else transferSum
                 if (sumForTax > 0) {
                     val tax = (sumForTax * 0.006).toInt() + 20
                     println("Комиссия составит $tax рублей")
